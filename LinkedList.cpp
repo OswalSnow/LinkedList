@@ -78,24 +78,53 @@ void LL::DeleteHead(){
 
 void LL::AddTail(int data){
     Node *temp = tail;
-    Node *nuevo_nodo = new Node(data);< 
+    Node *nuevo_nodo = new Node(data);
 
     if(tail == nullptr){
         tail = nuevo_nodo;
         head = nuevo_nodo;
+        return;
     }
     
+    tail->next = nuevo_nodo;
+    tail = nuevo_nodo;
+}
+
+void LL::DeleteTail(){
+    Node *temp = head;
+
+    if(temp == nullptr){
+        cout<<"La lista ya esta vacia"<<endl;
+        return;
+    }
+
+    if(temp == tail){
+        head = tail = temp->next;
+        delete temp;
+        return;
+    }
+
+    while(temp->next != tail )
+        temp = temp->next;
+    
+    tail = temp;
+    delete temp->next;
+    tail->next = nullptr;
 }
 
 int main(){
     LL *lista = new LL();
     
     lista->Print();
-    lista->DeleteHead();
-    lista->AddHead(12);
+    lista->DeleteTail();
+    lista->AddTail(10);
+    lista->Print();
+    lista->DeleteTail();
+    lista->Print();
+    lista->AddHead(30);
     lista->AddHead(20);
     lista->Print();
-    lista->DeleteHead();
+    lista->DeleteTail();
     lista->Print();
 
     return 0;
