@@ -19,4 +19,5 @@ public:
     void AddMid(int data, int index);
     void DeleteMid(int index);
     void ReverseList();
+    Node FindMid();
 };

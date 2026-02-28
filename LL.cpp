@@ -148,3 +148,20 @@ void LL::ReverseList(){
     tail = head;
     head = prev;
 }
+
+Node LL::FindMid(){
+    Node *slow = head;
+    Node *fast = head;
+
+    while( fast->next != nullptr){
+        
+        if(fast->next->next == nullptr){
+            fast->next = nullptr;
+        }
+        else{
+            fast = fast->next->next;
+        }
+        slow = slow->next;
+    }
+    return *slow;
+}

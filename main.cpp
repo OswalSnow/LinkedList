@@ -6,21 +6,13 @@ using namespace std;
 int main(){
     LL *lista = new LL();
 
-    lista->AddHead(5);
-    lista->AddHead(4);
-    lista->AddHead(3);
-    lista->AddHead(2);
-    lista->AddHead(1);
+    for(int i = 0; i < 5; i++)
+        lista->AddTail(i);
 
     lista->Print();
     cout<<"\n"<<endl;
 
-    lista->AddMid(40,2);
-    lista->Print();
-    cout<<"\n"<<endl;
-
-    lista->DeleteMid(2);
-    lista->Print();
+    cout<<lista->FindMid().data<<endl;
 
     return 0;
 }
