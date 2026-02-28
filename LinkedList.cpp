@@ -14,6 +14,7 @@ class LL{
 private:
     Node *head;
     Node *tail;
+    int size = 0;
 
 public:
     LL();
@@ -22,6 +23,8 @@ public:
     void DeleteHead();
     void AddTail(int data);
     void DeleteTail();
+    void AddMid(int data, int index);
+    void DeleteMid(int index);
     void ReverseList();
 };
 
@@ -59,6 +62,7 @@ void LL::AddHead(int data){
         tail = nuevo_nodo;
 
     head = nuevo_nodo;
+    this->size++;
 }
 
 void LL::DeleteHead(){
@@ -75,6 +79,7 @@ void LL::DeleteHead(){
         tail = nullptr;
 
     delete temp;
+    this->size--;
 }
 
 void LL::AddTail(int data){
@@ -89,6 +94,7 @@ void LL::AddTail(int data){
     
     tail->next = nuevo_nodo;
     tail = nuevo_nodo;
+    size++;
 }
 
 void LL::DeleteTail(){
@@ -111,6 +117,50 @@ void LL::DeleteTail(){
     tail = temp;
     delete temp->next;
     tail->next = nullptr;
+    this->size--;
+}
+
+void LL::AddMid(int data, int index){
+    if(index == 0){
+        this->AddHead(data);
+    } 
+    else if(index == size){
+        this->AddTail(index);
+    }
+    else{
+        Node *prev = head;
+        Node *current = prev->next;
+
+        for(int i = 1; i < index; i++){
+            prev = current;
+            current = current->next;
+        }
+        Node *newNode = new Node(data);
+        prev->next = newNode;
+        newNode->next = current;
+        this->size++;
+    }
+}
+
+void LL::DeleteMid(int index){
+    if(index == 0){
+        this->DeleteHead();
+    }
+    else if(index == size){
+        this->DeleteTail();
+    }
+    else{
+        Node *prev = head;
+        Node *current = prev->next;
+
+        for(int i = 1; i < index; i++){
+            prev = current;
+            current = current->next;
+        }
+        prev->next = current->next;
+        delete current;
+        this->size--;
+    }
 }
 
 void LL::ReverseList(){
@@ -143,7 +193,13 @@ int main(){
     lista->AddHead(1);
 
     lista->Print();
-    lista->ReverseList();
+    cout<<"\n"<<endl;
+
+    lista->AddMid(40,2);
+    lista->Print();
+    cout<<"\n"<<endl;
+
+    lista->DeleteMid(2);
     lista->Print();
 
     return 0;
