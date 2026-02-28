@@ -1,38 +1,4 @@
-#include <iostream>
-using namespace std;
-
-//Declaración de las clases
-class Node{
-public:
-    int data;
-    Node *next;
-
-    Node(int data);
-};
-
-class LL{
-private:
-    Node *head;
-    Node *tail;
-    int size = 0;
-
-public:
-    LL();
-    void Print();
-    void AddHead(int data);
-    void DeleteHead();
-    void AddTail(int data);
-    void DeleteTail();
-    void AddMid(int data, int index);
-    void DeleteMid(int index);
-    void ReverseList();
-};
-
-//Implementación de los métodos
-Node::Node(int data){
-    this->data = data;
-    this->next = nullptr;
-}
+#include "LL.h"
 
 LL::LL(){
     this->head = nullptr;
@@ -181,26 +147,4 @@ void LL::ReverseList(){
     }
     tail = head;
     head = prev;
-}
-
-int main(){
-    LL *lista = new LL();
-
-    lista->AddHead(5);
-    lista->AddHead(4);
-    lista->AddHead(3);
-    lista->AddHead(2);
-    lista->AddHead(1);
-
-    lista->Print();
-    cout<<"\n"<<endl;
-
-    lista->AddMid(40,2);
-    lista->Print();
-    cout<<"\n"<<endl;
-
-    lista->DeleteMid(2);
-    lista->Print();
-
-    return 0;
 }
