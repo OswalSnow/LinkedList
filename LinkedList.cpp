@@ -22,6 +22,7 @@ public:
     void DeleteHead();
     void AddTail(int data);
     void DeleteTail();
+    void ReverseList();
 };
 
 //Implementación de los métodos
@@ -112,19 +113,37 @@ void LL::DeleteTail(){
     tail->next = nullptr;
 }
 
+void LL::ReverseList(){
+    Node *prev = nullptr;
+    Node *temp = nullptr;
+    Node *current = head;
+
+    if(current == nullptr){
+        cout<<"La lista esta vacia, no se puede invertir"<<endl;
+        return;
+    }
+
+    while(current != nullptr){
+        temp = current->next;
+        current->next = prev;
+        prev = current;
+        current = temp;
+    }
+    tail = head;
+    head = prev;
+}
+
 int main(){
     LL *lista = new LL();
-    
+
+    lista->AddHead(5);
+    lista->AddHead(4);
+    lista->AddHead(3);
+    lista->AddHead(2);
+    lista->AddHead(1);
+
     lista->Print();
-    lista->DeleteTail();
-    lista->AddTail(10);
-    lista->Print();
-    lista->DeleteTail();
-    lista->Print();
-    lista->AddHead(30);
-    lista->AddHead(20);
-    lista->Print();
-    lista->DeleteTail();
+    lista->ReverseList();
     lista->Print();
 
     return 0;
