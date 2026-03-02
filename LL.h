@@ -11,6 +11,7 @@ private:
 
 public:
     LL();
+    Node* getHead();
     void Print();
     void AddHead(int data);
     void DeleteHead();
@@ -20,4 +21,5 @@ public:
     void DeleteMid(int index);
     void ReverseList();
     Node FindMid();
+    LL* OrderedMerge(LL *list);
 };

@@ -5,14 +5,18 @@ using namespace std;
 
 int main(){
     LL *lista = new LL();
+    LL *lista2 = new LL();
 
-    for(int i = 0; i < 5; i++)
-        lista->AddTail(i);
+    lista->AddHead(0);
+    lista->AddTail(5);
+    lista->AddTail(10);
 
-    lista->Print();
-    cout<<"\n"<<endl;
-
-    cout<<lista->FindMid().data<<endl;
+    lista2->AddHead(1);
+    lista2->AddTail(3);
+    lista2->AddTail(9);
+    
+    LL *lista3 = lista->OrderedMerge(lista2);
+    lista3->Print();
 
     return 0;
 }

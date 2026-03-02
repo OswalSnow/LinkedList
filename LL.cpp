@@ -5,6 +5,10 @@ LL::LL(){
     this->tail = nullptr;
 }
 
+Node* LL::getHead(){
+    return this->head;
+}
+
 void LL::Print(){
     Node *temp = head;
 
@@ -165,3 +169,30 @@ Node LL::FindMid(){
     }
     return *slow;
 }
+
+LL* LL::OrderedMerge(LL *list){
+    Node *list1 = this->head;
+    Node *list2 = list->getHead();
+    LL *newList = new LL();
+
+    while((list1 != nullptr) && (list2 != nullptr)){    
+        if(list1->data < list2->data){
+            newList->AddTail(list1->data);
+            list1 = list1->next;
+        }
+        else{
+            newList->AddTail(list2->data);
+            list2 = list2->next;
+        }
+    }
+    while(list1 != nullptr){
+        newList->AddTail(list1->data);
+        list1 = list1->next;
+    }
+    while(list2 != nullptr){
+        newList->AddTail(list2->data);
+        list2 = list2->next;
+    }
+
+    return newList;
+    }
