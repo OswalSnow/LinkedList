@@ -22,4 +22,5 @@ public:
     void ReverseList();
     Node FindMid();
     LL* OrderedMerge(LL *list);
+    LL* CumulativeSum();
 };

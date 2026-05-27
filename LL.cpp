@@ -196,3 +196,23 @@ LL* LL::OrderedMerge(LL *list){
 
     return newList;
     }
+
+    LL* LL::CumulativeSum(){
+        Node *tempIndex = this->getHead();
+        int tempData = 0;
+
+        if(tempIndex == nullptr){
+            cout<<"Lista vacia"<<endl;
+            return nullptr;
+        }
+
+        LL *newList = new LL();
+
+        while(tempIndex != nullptr){
+            tempData += tempIndex->data;
+            newList->AddTail(tempData);
+
+            tempIndex = tempIndex->next;
+        }
+        return newList;
+    }
