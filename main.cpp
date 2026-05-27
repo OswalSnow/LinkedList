@@ -5,18 +5,18 @@ using namespace std;
 
 int main(){
     LL *lista = new LL();
-    LL *lista2 = new LL();
 
-    lista->AddHead(0);
+    lista->AddTail(1);
+    lista->AddTail(3);
     lista->AddTail(5);
-    lista->AddTail(10);
+    lista->AddTail(7);
 
-    lista2->AddHead(1);
-    lista2->AddTail(3);
-    lista2->AddTail(9);
+    cout<<"========== Lista Original =========="<<endl;
+    lista->Print();
     
-    LL *lista3 = lista->OrderedMerge(lista2);
-    lista3->Print();
+    LL *lista2 = lista->CumulativeSum();
+    cout<<"========== Lista AccSum =========="<<endl;
+    lista2->Print();
 
     return 0;
 }
